@@ -8,7 +8,11 @@ ${DIR}/uninstall.sh
 # install_files
 
 #Install Vim plugins
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 ln -sf ${DIR}/dotfiles/nvim ~/.config/nvim
+#nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+#nvim --headless -c 'PackerInstall'
+echo "TODO: need to run :PackerInstall on first nvim open"
+

@@ -1,2 +1,3 @@
 .netrwhist
 dotfiles/nvim/plugged/**
+dotfiles/nvim/plugin/**

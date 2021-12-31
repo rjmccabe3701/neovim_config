@@ -21,5 +21,3 @@ nmap("<C-k>", "<C-w>k")
 nmap("[q", ":cn<CR>")
 nmap("]q", ":cp<CR>")
 
-
-

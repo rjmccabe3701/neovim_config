@@ -18,3 +18,14 @@ https://www.notonlycode.org/neovim-lua-config/
 look at
 nvim-compe
 
+
+
+#Packer
+
+A pluing manager in lua
+https://github.com/wbthomason/packer.nvim
+
+It puts its plugins here:
+ ~/.local/share/nvim/site/pack/packer/
+
+And it looks like it can live along side Plug
