@@ -20,3 +20,24 @@ echo "TODO: need to run :PackerInstall on first nvim open"
 #LSP language servers
 pip3 install pyright
 
+if command -v go &> /dev/null
+then
+   go install -u golang.org/x/tools/gopls@latest
+   #TODO: add ~/go/bin to path
+fi
+
+case "$(uname -s)" in
+
+   Darwin)
+     echo 'Detected MAC'
+     brew install llvm
+     ;;
+
+   Linux)
+     echo 'Detected Linux'
+     sudo apt-get install clangd-12
+     ;;
+  *)
+     echo "Unknown OS"
+     ;;
+esac
