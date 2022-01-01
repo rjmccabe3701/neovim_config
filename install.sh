@@ -16,3 +16,7 @@ ln -sf ${DIR}/dotfiles/nvim ~/.config/nvim
 #nvim --headless -c 'PackerInstall'
 echo "TODO: need to run :PackerInstall on first nvim open"
 
+
+#LSP language servers
+pip3 install pyright
+

@@ -4,8 +4,7 @@ TelescopeMapArgs = TelescopeMapArgs or {}
 local map_tele = function(key, f, options, buffer)
   local map_key = vim.api.nvim_replace_termcodes(key .. f, true, true, true)
 
-  --print("map key = " ... map_key)
-  print("map key = " .. map_key)
+  --print("map key = " .. map_key)
   TelescopeMapArgs[map_key] = options or {}
 
   local mode = "n"

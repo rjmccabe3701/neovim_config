@@ -70,3 +70,48 @@ endfunction
 
 nnoremap <silent> <Leader>R :call Cycle_numbering()<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"from http://vimawesome.com/plugin/easymotion
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+""""""""""""""""""""""""
+
+"Use Escape to exit terminal "insert" mode
+tnoremap <Esc> <C-\><C-n>
+
+"Meta-[ will send escape to terminal
+tnoremap <M-[> <Esc>
+
+"The Mozilla style is a pretty sane fallback if .clang-format
+" DNE in the working dir
+let g:clang_format_fallback_style = 'Mozilla'
+vmap <C-Y> :py3f ~/.vim/clang-format.py<cr>
+
+"Universal reformatting (uses the vim-autoformat plugin), will
+" call into clang-format for C/C++, autopep8 for python, etc.
+vmap <C-U> :Autoformat<CR>
+
+"Recursive git grep
+function! Ggrepr(myargs)
+   echo a:myargs
+   exe 'Ggrep --recurse-submodules' a:myargs
+   " exe 'echo a:myargs'
+endfunction
+" com -nargs=1 Ggrepr call Ggrepr(<args>)
+com -nargs=1 Ggrepr call Ggrepr(<f-args>)
+" command! Ggrepr call Ggrepr(<args>)
+
+"Shortcut to "git grep" and "git grep --recurse-submodules
+nmap <C-\>\ :Ggrep <C-R>=expand("<cword>")<CR><CR>
+nmap <C-\>r :Ggrepr <C-R>=expand("<cword>")<CR><CR>
+
+set textwidth=110

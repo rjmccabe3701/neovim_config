@@ -49,4 +49,6 @@ return require('packer').startup(function()
    --  We recommend updating the parsers on update
     --use 'nvim-treesitter/nvim-treesitter' {'do': ':TSUpdate'}
     use 'nvim-treesitter/nvim-treesitter'
+
+    use 'easymotion/vim-easymotion'
 end)

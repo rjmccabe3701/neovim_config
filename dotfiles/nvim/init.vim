@@ -16,3 +16,7 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC | echom "Reloaded $NVIMRC"
 
 " Highlight on yank
 au TextYankPost * silent! lua vim.highlight.on_yank {timeout=500}
+
+lua << EOF
+require'lspconfig'.pyright.setup{}
+EOF
