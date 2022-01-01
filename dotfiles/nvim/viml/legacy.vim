@@ -115,3 +115,5 @@ nmap <C-\>\ :Ggrep <C-R>=expand("<cword>")<CR><CR>
 nmap <C-\>r :Ggrepr <C-R>=expand("<cword>")<CR><CR>
 
 set textwidth=110
+
+colorscheme gruvbox

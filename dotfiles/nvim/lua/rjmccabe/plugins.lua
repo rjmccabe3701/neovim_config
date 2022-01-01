@@ -51,4 +51,18 @@ return require('packer').startup(function()
     use 'nvim-treesitter/nvim-treesitter'
 
     use 'easymotion/vim-easymotion'
+
+    -- Good colorscheme
+    use 'morhetz/gruvbox'
+
+    --Autocompletion stuff 
+    --use 'nvim-compe'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
 end)
