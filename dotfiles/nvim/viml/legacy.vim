@@ -92,7 +92,7 @@ tnoremap <C-v><Esc> <Esc>
 
 "The Mozilla style is a pretty sane fallback if .clang-format
 " DNE in the working dir
-let g:clang_format_fallback_style = 'Mozilla'
+let g:clang_format_fallback_style = 'Google'
 vmap <C-Y> :py3f ~/.vim/clang-format.py<cr>
 
 "Universal reformatting (uses the vim-autoformat plugin), will
