@@ -10,12 +10,22 @@ function imap(shortcut, command)
   map('i', shortcut, command)
 end
 
+function tmap(shortcut, command)
+  map('t', shortcut, command)
+end
+
 
 --Window movements
 nmap("<C-h>", "<C-w>h")
 nmap("<C-j>", "<C-w>j")
 nmap("<C-l>", "<C-w>l")
 nmap("<C-k>", "<C-w>k")
+--Window movements in terminal mode
+-- TODO: doesn't seem to work
+tmap("<C-h>", "<C-w>h")
+tmap("<C-j>", "<C-w>j")
+tmap("<C-l>", "<C-w>l")
+tmap("<C-k>", "<C-w>k")
 
 --Cycle thru quickfix list
 nmap("[q", ":cn<CR>")

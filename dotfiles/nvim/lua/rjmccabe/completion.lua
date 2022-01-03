@@ -30,12 +30,14 @@ cmp.setup({
    },
    sources = cmp.config.sources({
       { name = 'nvim_lsp' },
+      { name = 'nvim_lua' },
       { name = 'vsnip' }, -- For vsnip users.
+      { name = 'path' },
       -- { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'snippy' }, -- For snippy users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
    }, {
-      { name = 'buffer' },
+      { name = 'buffer', keyword_length = 5 },
    })
 })
 -- `/` cmdline setup.
@@ -49,7 +51,7 @@ cmp.setup.cmdline(':', {
    sources = cmp.config.sources({
       { name = 'path' }
    }, {
-      { name = 'cmdline' }
+      { name = 'cmdline', keyword_length = 5 }
    })
 })
 -- Setup lspconfig.
@@ -57,3 +59,4 @@ cmp.setup.cmdline(':', {
 --require('lspconfig')[%YOUR_LSP_SERVER%].setup {
 --capabilities = capabilities
 --}
+

@@ -4,7 +4,6 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
-
   use 'neovim/nvim-lspconfig'
   use 'nvim-lua/plenary.nvim'
 
@@ -48,14 +47,17 @@ return require('packer').startup(function()
 
    --  We recommend updating the parsers on update
     --use 'nvim-treesitter/nvim-treesitter' {'do': ':TSUpdate'}
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+       'nvim-treesitter/nvim-treesitter',
+       run = ':TSUpdate'
+    }
 
     use 'easymotion/vim-easymotion'
 
     -- Good colorscheme
     use 'morhetz/gruvbox'
 
-    --Autocompletion stuff 
+    --Autocompletion stuff
     --use 'nvim-compe'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-nvim-lua'
@@ -65,4 +67,18 @@ return require('packer').startup(function()
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
+
+    use {
+       'junegunn/fzf' , run = 'fzf#install()'
+    }
+
+    use 'w0rp/ale'
+
+    -- Use ":Obsession" to start tracking session (":Obsession!" to stop).
+    --  re-open session with vim -S
+    use 'tpope/vim-obsession'
+
+    -- Automatically configures formatting via a ~/.editorconfig file
+    --  (or .editorconfig in a local directory)
+    use 'sgur/vim-editorconfig'
 end)

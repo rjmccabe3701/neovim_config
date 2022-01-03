@@ -12,6 +12,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 ln -sf ${DIR}/dotfiles/nvim ~/.config/nvim
+ln -sf ${DIR}/dotfiles/.editorconfig ~/.editorconfig
 #nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 #nvim --headless -c 'PackerInstall'
 echo "TODO: need to run :PackerInstall on first nvim open"
@@ -35,7 +36,7 @@ case "$(uname -s)" in
 
    Linux)
      echo 'Detected Linux'
-     sudo apt-get install clangd-12
+     sudo apt-get install clangd-12 ripgrep fd-find
      ;;
   *)
      echo "Unknown OS"

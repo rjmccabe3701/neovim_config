@@ -16,7 +16,7 @@ map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
 
 "Use Space/Shift-Tab key to switch between tabs
-nmap <space> gt
+"nmap <space> gt "This inteferes with telescope shortcuts
 nmap <S-Tab> gT
 
 set history=1000                    " Store a ton of history (default is 20)
@@ -54,7 +54,7 @@ autocmd FileType make setlocal noexpandtab
 autocmd FileType go setlocal noexpandtab
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Cycle thru relativenumber + number, number (only) and no numbering 
+" Cycle thru relativenumber + number, number (only) and no numbering
 function! Cycle_numbering() abort
   if exists('+relativenumber')
     execute {
@@ -87,9 +87,8 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 "Use Escape to exit terminal "insert" mode
 tnoremap <Esc> <C-\><C-n>
-
-"Meta-[ will send escape to terminal
-tnoremap <M-[> <Esc>
+"Send Esc to terminal
+tnoremap <C-v><Esc> <Esc>
 
 "The Mozilla style is a pretty sane fallback if .clang-format
 " DNE in the working dir
