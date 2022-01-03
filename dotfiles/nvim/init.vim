@@ -20,4 +20,3 @@ nmap <silent> ]W <Plug>(ale_last)
 " Show terminal cursor when in normal moode
 highlight! link TermCursor Cursor
 highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
-

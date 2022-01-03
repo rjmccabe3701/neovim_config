@@ -57,3 +57,10 @@ Problem: nesting will occur for git commit
 :mksession!
 This creates a Session.vim file in the cwd. Then you can restore with
 vim -S
+
+
+# Install Issues
+
+
+ * Need to download the fzf binary when vim starts
+ *
