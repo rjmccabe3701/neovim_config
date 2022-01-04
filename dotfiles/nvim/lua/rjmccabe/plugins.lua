@@ -8,7 +8,12 @@ return require('packer').startup(function()
   use 'nvim-lua/plenary.nvim'
 
   --commenting shortcuts
-  use 'scrooloose/nerdcommenter'
+  use {
+     'numToStr/Comment.nvim',
+     config = function()
+        require('Comment').setup()
+     end
+  }
 
   use {
      'kyazdani42/nvim-tree.lua',

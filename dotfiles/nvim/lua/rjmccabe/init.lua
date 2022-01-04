@@ -5,7 +5,9 @@ require("rjmccabe.telescope.mappings")
 require("rjmccabe.completion")
 require("rjmccabe.lsp")
 require("rjmccabe.tree")
---
+require('Comment').setup()
+
+
 P = function(v)
   print(vim.inspect(v))
   return v
