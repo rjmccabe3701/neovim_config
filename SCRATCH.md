@@ -64,3 +64,7 @@ vim -S
 
  * Need to download the fzf binary when vim starts
  *
+
+# Good references
+
+https://github.com/LunarVim/Neovim-from-scratch

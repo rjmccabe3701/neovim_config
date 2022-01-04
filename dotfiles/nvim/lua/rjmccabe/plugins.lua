@@ -10,12 +10,14 @@ return require('packer').startup(function()
   --commenting shortcuts
   use 'scrooloose/nerdcommenter'
 
-
-  --I can't get this damn thing to work, will use nerdtree until I get my
-  --bearings
-  --use 'kyazdani42/nvim-web-devicons'
-  --use 'kyazdani42/nvim-tree.lua'
-  use 'scrooloose/nerdtree'
+  use {
+     'kyazdani42/nvim-tree.lua',
+     --Too fucking hard to setup and doesn't work over SSH (with putty)
+     --requires = {
+        --'kyazdani42/nvim-web-devicons', -- optional, for file icon
+     --},
+     config = function() require'nvim-tree'.setup {} end
+  }
 
   -- Lazy loading:
   -- Load on specific commands
@@ -29,6 +31,9 @@ return require('packer').startup(function()
 
    -- Best git plugin
    use 'tpope/vim-fugitive'
+
+   use 'tpope/vim-surround'
+
    -- Shows if file is modified on the left
    use 'mhinz/vim-signify'
    --------

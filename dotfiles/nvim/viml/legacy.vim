@@ -116,3 +116,12 @@ nmap <C-\>r :Ggrepr <C-R>=expand("<cword>")<CR><CR>
 set textwidth=110
 
 colorscheme gruvbox
+
+"Block comment code in C/C++
+autocmd FileType cpp,c let b:surround_45 = "#if 0\n\r\n#endif\n"
+
+"Code block for markdown
+autocmd FileType markdown let b:surround_45 = "```\n\r\n```"
+
+"Block comment for python
+autocmd FileType python let b:surround_45 = "\"\"\"\n\r\n\"\"\""
