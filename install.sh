@@ -36,9 +36,11 @@ case "$(uname -s)" in
 
    Linux)
      echo 'Detected Linux'
-     sudo apt-get install clangd clang-tidy \
-        ripgrep fd-find \
-        sqlite3 libsqlite3-dev
+     if command -v sudo > /dev/null; then
+        sudo apt-get install clangd clang-tidy \
+           ripgrep fd-find \
+           sqlite3 libsqlite3-dev
+     fi
      ;;
   *)
      echo "Unknown OS"
