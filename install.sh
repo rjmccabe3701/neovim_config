@@ -18,9 +18,12 @@ echo "TODO: need to run :PackerInstall on first nvim open"
 
 
 #LSP language servers
-pip3 install pyright
+if command -v pip3 > /dev/null
+then
+   pip3 install pyright
+fi
 
-if command -v go &> /dev/null
+if command -v go > /dev/null
 then
    go install -u golang.org/x/tools/gopls@latest
    #TODO: add ~/go/bin to path
