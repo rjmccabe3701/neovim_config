@@ -4,13 +4,12 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd ${DIR}
 
 ${DIR}/uninstall.sh
-# source ${DIR}/functions.sh
-# install_files
 
 #Install Vim plugins
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
+mkdir -p ~/.config
 ln -sf ${DIR}/dotfiles/nvim ~/.config/nvim
 ln -sf ${DIR}/dotfiles/.editorconfig ~/.editorconfig
 #nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
