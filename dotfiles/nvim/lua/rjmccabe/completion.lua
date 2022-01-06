@@ -1,4 +1,4 @@
---From 
+--From
 -- https://github.com/hrsh7th/nvim-cmp
 
 --set completeopt=menu,menuone,noselect
@@ -29,7 +29,7 @@ cmp.setup({
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
    },
    sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
+      { name = 'nvim_lsp', keyword_length = 3 },
       { name = 'nvim_lua' },
       { name = 'vsnip' }, -- For vsnip users.
       { name = 'path' },

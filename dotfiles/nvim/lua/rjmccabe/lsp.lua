@@ -41,6 +41,17 @@ for _, lsp in ipairs(servers) do
    }
 end
 
+nvim_lsp.pyright.setup{
+   settings = {
+      python = {
+         analysis = {
+            typeCheckingMode="off"
+         }
+         -- reportUnknownVariableType=false,
+      }
+   }
+}
+
 local _ = vim.cmd [[
 autocmd BufWritePre *.go lua vim.lsp.buf.formatting()
 "autocmd BufWritePre *.go lua goimports(1000)
