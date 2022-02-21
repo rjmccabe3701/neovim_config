@@ -4,7 +4,7 @@ require("rjmccabe.telescope.setup")
 require("rjmccabe.telescope.mappings")
 require("rjmccabe.completion")
 require("rjmccabe.lsp")
-require("rjmccabe.tree")
+-- require("rjmccabe.tree")
 require('Comment').setup()
 
 

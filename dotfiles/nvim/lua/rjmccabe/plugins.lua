@@ -15,14 +15,15 @@ return require('packer').startup(function()
      end
   }
 
-  use {
-     'kyazdani42/nvim-tree.lua',
-     --Too fucking hard to setup and doesn't work over SSH (with putty)
-     --requires = {
-        --'kyazdani42/nvim-web-devicons', -- optional, for file icon
-     --},
-     config = function() require'nvim-tree'.setup {} end
-  }
+  -- This is more trouble than it is work. The native directory explorer is better
+  -- use {
+  --    'kyazdani42/nvim-tree.lua',
+  --    --Too fucking hard to setup and doesn't work over SSH (with putty)
+  --    --requires = {
+  --       --'kyazdani42/nvim-web-devicons', -- optional, for file icon
+  --    --},
+  --    config = function() require'nvim-tree'.setup {} end
+  -- }
 
   -- Lazy loading:
   -- Load on specific commands

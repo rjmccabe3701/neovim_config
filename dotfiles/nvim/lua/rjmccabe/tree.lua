@@ -1,8 +1,8 @@
 local _ = vim.cmd [[
 let g:nvim_tree_show_icons = {
-    \ 'git': 1,
+    \ 'git': 0,
     \ 'folders': 0,
-    \ 'files': 1,
+    \ 'files': 0,
     \ 'folder_arrows': 0,
     \ }
 ]]
@@ -18,15 +18,17 @@ end
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 require'nvim-tree'.setup{
+   hijack_cursor        = false,
    view = {
       mappings = {
          custom_only = false,
          list = {
-            { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
+            { key = { "<CR>", "o" }, cb = tree_cb "edit" },
             { key = "h", cb = tree_cb "close_node" },
             { key = "v", cb = tree_cb "vsplit" },
          }
-      }
+      },
+      auto_resize = true
    },
    --show_icons = {
      --git = 1,
