@@ -1,3 +1,22 @@
+
+" Highlight on yank
+au TextYankPost * silent! lua vim.highlight.on_yank {timeout=500}
+
+"Basic ctrl-p like functionaity (with telescope)
+noremap <C-p> <cmd>Telescope git_files<cr>
+
+" Mappings in the style of unimpaired-next
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)
+
+" Show terminal cursor when in normal moode
+highlight! link TermCursor Cursor
+highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+
+
+
 let mapleader = ','
 set mouse=a                 " Automatically enable mouse usage
 " Copy/paste
@@ -115,7 +134,7 @@ nmap <C-\>r :Ggrepr <C-R>=expand("<cword>")<CR><CR>
 
 set textwidth=110
 
-colorscheme gruvbox
+" colorscheme gruvbox
 
 "Block comment code in C/C++
 autocmd FileType cpp,c let b:surround_45 = "#if 0\n\r\n#endif\n"

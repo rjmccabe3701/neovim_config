@@ -5,17 +5,15 @@ cd ${DIR}
 
 ${DIR}/uninstall.sh
 
-#Install Vim plugins
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
 mkdir -p ~/.config
 ln -sf ${DIR}/dotfiles/nvim ~/.config/nvim
 ln -sf ${DIR}/dotfiles/.editorconfig ~/.editorconfig
 #nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 #nvim --headless -c 'PackerInstall'
-echo "TODO: need to run :PackerInstall on first nvim open"
-
+# echo "TODO: need to run :PackerInstall on first nvim open"
+# nvim \
+#     "+PackerInstall" \
+#     "+qall"
 
 #LSP language servers
 if command -v pip3 > /dev/null
