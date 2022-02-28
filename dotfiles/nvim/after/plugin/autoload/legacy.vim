@@ -15,8 +15,6 @@ nmap <silent> ]W <Plug>(ale_last)
 highlight! link TermCursor Cursor
 highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
 
-
-
 let mapleader = ','
 set mouse=a                 " Automatically enable mouse usage
 " Copy/paste
@@ -33,10 +31,6 @@ set noswapfile
 map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
 map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
 map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
-
-"Use Space/Shift-Tab key to switch between tabs
-"nmap <space> gt "This inteferes with telescope shortcuts
-nmap <S-Tab> gT
 
 set history=1000                    " Store a ton of history (default is 20)
 "set spell                           " Spell checking on
@@ -134,7 +128,7 @@ nmap <C-\>r :Ggrepr <C-R>=expand("<cword>")<CR><CR>
 
 set textwidth=110
 
-" colorscheme gruvbox
+colorscheme gruvbox
 
 "Block comment code in C/C++
 autocmd FileType cpp,c let b:surround_45 = "#if 0\n\r\n#endif\n"
@@ -144,3 +138,4 @@ autocmd FileType markdown let b:surround_45 = "```\n\r\n```"
 
 "Block comment for python
 autocmd FileType python let b:surround_45 = "\"\"\"\n\r\n\"\"\""
+

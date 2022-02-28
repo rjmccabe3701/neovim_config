@@ -32,7 +32,5 @@ if !exists('*tjdevries#save_and_exec')
   endfunction
 endif
 
-echo "sp"
-
 " Execute this file
 nnoremap <leader><leader>x :call tjdevries#save_and_exec()<CR>

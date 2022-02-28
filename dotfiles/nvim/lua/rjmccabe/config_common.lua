@@ -31,7 +31,3 @@ tmap("<C-k>", "<C-w>k")
 nmap("[q", ":cn<CR>")
 nmap("]q", ":cp<CR>")
 
-
---Toggle NvimTree, got this idea from:
---https://github.com/LunarVim/Neovim-from-scratch
-nmap("<space>e", ":NvimTreeToggle<cr>")
