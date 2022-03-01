@@ -278,9 +278,9 @@ function M.grep_last_search(opts)
   require("telescope.builtin").grep_string(opts)
 end
 
-function M.oldfiles()
-  require("telescope").extensions.frecency.frecency(themes.get_ivy {})
-end
+-- function M.oldfiles()
+--   require("telescope").extensions.frecency.frecency(themes.get_ivy {})
+-- end
 
 -- function M.my_plugins()
 --   require("telescope.builtin").find_files {

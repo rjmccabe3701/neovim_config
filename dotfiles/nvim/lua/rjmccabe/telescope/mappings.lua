@@ -46,7 +46,11 @@ map_tele("<space>f/", "grep_last_search", {
 map_tele("<space>ft", "git_files")
 -- map_tele("<space>fg", "live_grep")
 map_tele("<space>fg", "multi_rg")
-map_tele("<space>fo", "oldfiles")
+
+--I'm not sure why, but directly using the existing "oldfiles" command works better
+vim.api.nvim_set_keymap('n', '<space>fo', '<cmd>Telescope oldfiles<CR>', {noremap = false, nowait = true})
+-- map_tele("<space>fo", "oldfiles")
+
 map_tele("<space>fd", "fd")
 map_tele("<space>fs", "fs")
 -- map_tele("<space>pp", "project_search")
