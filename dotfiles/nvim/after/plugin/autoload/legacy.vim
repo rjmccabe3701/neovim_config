@@ -65,6 +65,7 @@ autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType make setlocal noexpandtab
 autocmd FileType go setlocal noexpandtab
+autocmd BufRead,BufNewFile Jenkinsfile set filetype=groovy
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Cycle thru relativenumber + number, number (only) and no numbering
@@ -105,8 +106,17 @@ tnoremap <C-v><Esc> <Esc>
 
 "The Mozilla style is a pretty sane fallback if .clang-format
 " DNE in the working dir
-let g:clang_format_fallback_style = 'Google'
-vmap <C-Y> :py3f ~/.vim/clang-format.py<cr>
+" let g:clang_format_fallback_style = 'Google'
+" vmap <C-Y> :py3f ~/.vim/clang-format.py<cr>
+"
+"From https://jdhao.github.io/2020/04/19/nvim_cpp_and_c_completion/
+let g:neoformat_cpp_clangformat = {
+    \ 'exe': 'clang-format',
+    \ 'args': ['--style="Google"']
+\}
+let g:neoformat_enabled_cpp = ['clangformat']
+let g:neoformat_enabled_c = ['clangformat']
+vmap <C-Y> :Neoformat<cr>
 
 "Universal reformatting (uses the vim-autoformat plugin), will
 " call into clang-format for C/C++, autopep8 for python, etc.
