@@ -117,6 +117,10 @@ require('lualine').setup {
     component_separators = '|',
     section_separators = '',
   },
+  sections = {
+    --Remove branch (hides other stuff for long branch names)
+    lualine_b = {'diff', 'diagnostistcs'}
+  }
 }
 
 --Enable Comment.nvim
