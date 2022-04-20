@@ -39,7 +39,8 @@ case "$(uname -s)" in
      if command -v sudo > /dev/null; then
         sudo apt-get install clangd clang-tidy \
            ripgrep fd-find \
-           sqlite3 libsqlite3-dev
+           sqlite3 libsqlite3-dev \
+	   clang-format
      fi
      ;;
   *)
