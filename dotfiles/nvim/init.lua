@@ -32,6 +32,22 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable "make" == 1 }
 
+  --------
+  -- MY STUFF
+  -- Good colorscheme
+  use 'morhetz/gruvbox'
+  use 'tpope/vim-surround'
+
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/cmp-path'
+  use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-vsnip'
+  use 'hrsh7th/vim-vsnip'
+  use 'sgur/vim-editorconfig'
+
+  use 'easymotion/vim-easymotion'
+  --------
+
   if is_bootstrap then
     require('packer').sync()
   end
@@ -381,6 +397,8 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+require "rjmccabe"
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
