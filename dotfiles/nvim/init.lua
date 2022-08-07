@@ -46,6 +46,7 @@ require('packer').startup(function(use)
   use 'sgur/vim-editorconfig'
 
   use 'easymotion/vim-easymotion'
+  use 'sbdchd/neoformat'
   --------
 
   if is_bootstrap then
