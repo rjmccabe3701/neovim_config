@@ -14,6 +14,10 @@ function tmap(shortcut, command)
   map('t', shortcut, command)
 end
 
+function vmap(shortcut, command)
+  map('v', shortcut, command)
+end
+
 
 --Window movements
 nmap("<C-h>", "<C-w>h")
@@ -30,4 +34,7 @@ tmap("<C-k>", "<C-w>k")
 --Cycle thru quickfix list
 nmap("[q", ":cn<CR>")
 nmap("]q", ":cp<CR>")
+
+-- Paste over currently selected text without yanking it
+vmap("p", '"_dP')
 
