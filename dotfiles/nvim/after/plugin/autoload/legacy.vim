@@ -24,7 +24,6 @@ set nobackup
 
 "Dont create swap files
 set noswapfile
-
 "Easy opening of directories
 " From:
 " http://stackoverflow.com/questions/1708623/opening-files-in-the-same-folder-as-the-current-file-in-vim

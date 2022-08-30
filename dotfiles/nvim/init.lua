@@ -1,6 +1,5 @@
 -- Got this from
 -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
---
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 local is_bootstrap = false
@@ -47,6 +46,9 @@ require('packer').startup(function(use)
 
   use 'easymotion/vim-easymotion'
   use 'sbdchd/neoformat'
+  use 'mfussenegger/nvim-dap'
+  use 'leoluz/nvim-dap-go'
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
   --------
 
   if is_bootstrap then
@@ -400,6 +402,79 @@ cmp.setup {
 }
 
 require "rjmccabe"
+
+-- Autoformat gocode on file save
+-- See: https://www.getman.io/posts/programming-go-in-neovim/
+vim.api.nvim_create_autocmd('BufWritePre', {
+  callback = function()
+    local timeout_ms=1000
+    local context = { source = { organizeImports = true } }
+    vim.validate { context = { context, "t", true } }
+
+    local params = vim.lsp.util.make_range_params()
+    params.context = context
+
+    -- See the implementation of the textDocument/codeAction callback
+    -- (lua/vim/lsp/handler.lua) for how to do this properly.
+    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
+    -- print("result is " .. vim.inspect(result))
+    if not result then return end
+    local r = next(result)
+    -- print("r = " .. vim.inspect(r))
+    if not r then return end
+      -- or next(result) == nil then return end
+    -- local actions = result[1].result
+    local actions = result[r].result
+    if not actions then return end
+    local action = actions[1]
+
+    -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
+    -- is a CodeAction, it can have either an edit, a command or both. Edits
+    -- should be executed first.
+    if action.edit or type(action.command) == "table" then
+      if action.edit then
+        vim.lsp.util.apply_workspace_edit(action.edit)
+      end
+      if type(action.command) == "table" then
+        vim.lsp.buf.execute_command(action.command)
+      end
+    else
+      vim.lsp.buf.execute_command(action)
+    end
+  end,
+  -- group = highlight_group,
+  pattern = '*.go',
+})
+
+vim.keymap.set("n", "<F1>", ":lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<F2>", ":lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<F3>", ":lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<F4>", ":lua require'dap'.step_out()<CR>")
+vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
+
+require('dap-go').setup()
+require('dapui').setup()
+
+local dap, dapui = require("dap"), require("dapui")
+dap.listeners.after.event_initialized["dapui_config"] = function()
+  dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+  dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+  dapui.close()
+end
+
+-- dap.adapters.delve = {
+--   type = "server",
+--   host = "127.0.0.1",
+--   port = 38697,
+-- }
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
