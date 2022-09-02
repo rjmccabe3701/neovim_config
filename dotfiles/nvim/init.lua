@@ -145,9 +145,8 @@ require('lualine').setup {
     theme = 'onedark',
     component_separators = '|',
     section_separators = '',
-  },
-}
-
+    global_status = true
+  }, }
 -- Enable Comment.nvim
 require('Comment').setup()
 
@@ -401,7 +400,6 @@ cmp.setup {
   },
 }
 
-require "rjmccabe"
 
 -- Autoformat gocode on file save
 -- See: https://www.getman.io/posts/programming-go-in-neovim/
@@ -454,6 +452,7 @@ vim.keymap.set("n", "<leader>b", ":lua require'dap'.toggle_breakpoint()<CR>")
 vim.keymap.set("n", "<leader>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
 vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>")
+vim.keymap.set("n", "<leader>td", ":lua require'dap-go'.debug_test()<CR>")
 
 require('dap-go').setup()
 require('dapui').setup()
@@ -469,6 +468,10 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
+--TODO: this gets clobbered by the legacy vim config
+vim.opt.laststatus = 3
+
+require "rjmccabe"
 -- dap.adapters.delve = {
 --   type = "server",
 --   host = "127.0.0.1",

@@ -148,3 +148,5 @@ autocmd FileType markdown let b:surround_45 = "```\n\r\n```"
 "Block comment for python
 autocmd FileType python let b:surround_45 = "\"\"\"\n\r\n\"\"\""
 
+"Global status line
+set laststatus=3

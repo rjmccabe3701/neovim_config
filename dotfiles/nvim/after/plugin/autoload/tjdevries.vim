@@ -1,14 +1,6 @@
 "Stuff stolen from
 "https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/plugin/keymaps.vim
 
-" Move line(s) up and down
-" Doesn't work in iterm :(
-inoremap <M-j> <Esc>:m .+1<CR>==gi
-inoremap <M-k> <Esc>:m .-2<CR>==gi
-vnoremap <M-j> :m '>+1<CR>gv=gv
-vnoremap <M-k> :m '<-2<CR>gv=gv
-
-
 " Random number into vim
 inoremap <leader>nr <c-o>:py3 import vim, random; vim.current.line += str(random.randint(0,9))<CR><esc>A
 
