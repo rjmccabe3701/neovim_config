@@ -44,6 +44,10 @@ require('packer').startup(function(use)
   use 'hrsh7th/vim-vsnip'
   use 'sgur/vim-editorconfig'
 
+  -- I wanted to use this for a golang status line to show the current functions
+  -- ... I couldn't get it to work
+  -- use 'nvim-lua/lsp-status.nvim'
+
   use 'easymotion/vim-easymotion'
   use 'sbdchd/neoformat'
   use 'mfussenegger/nvim-dap'
@@ -137,6 +141,20 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- Returns current code context (used in lualine
+local current_treesitter_context = function()
+  local f = require'nvim-treesitter'.statusline({
+    indicator_size = 100,
+    type_patterns = {"class", "function", "method", "interface", "type_spec", "table"}
+    -- type_patterns = {"class", "function", "method", "interface", "type_spec", "table", "if_statement", "for_statement", "for_in_statement"}
+  })
+  local fun_name = string.format("%s", f) -- convert to string, it may be a empty ts node
+  if fun_name == "vim.NIL" then
+    return " "
+  end
+  return " " .. fun_name
+end
+
 -- Set lualine as statusline
 -- See `:help lualine.txt`
 require('lualine').setup {
@@ -146,7 +164,16 @@ require('lualine').setup {
     component_separators = '|',
     section_separators = '',
     global_status = true
-  }, }
+  },
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename'},
+    lualine_x = {current_treesitter_context, 'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },}
+
 -- Enable Comment.nvim
 require('Comment').setup()
 
